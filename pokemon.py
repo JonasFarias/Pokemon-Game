@@ -1,12 +1,12 @@
 class Pokemon:
-
-    def __int__(self, tipo, especie, level=1, nome=None):
-        self.tipo = tipo
+    def __int__(self, especie, level=1, nome=None):
         self.especie = especie
         self.level = level
 
         if nome:
             self.nome = nome
+        else:
+            self.nome = especie
 
     def __str__(self):
         return ('{}({})'.format(self.nome, self.level))
@@ -16,11 +16,22 @@ class Pokemon:
 
 
 class PokemonEletrico(Pokemon):
+    tipo = 'eletrico'
     def atacar(self, pokemon):
         print('{}Soltou um raio do trovao e {}'.format(self, pokemon))
 
 
-meu_pokemon = PokemonEletrico()
-amigo_pokemon = Pokemon()
-meu_pokemon.atacar(amigo_pokemon)
-amigo_pokemon.atacar(meu_pokemon)
+class PokemonFogo(Pokemon):
+    tipo = 'fogo'
+    def atacar(self, pokemon):
+        print('{} Soltou um lança chamas em {}'.format(self, pokemon))
+class PokemonAgua(Pokemon):
+    tipo = 'agua'
+    def atacar(self, pokemon):
+        print('{} Soltou um jato de agua em {}'.format(self, pokemon))
+
+meu_pokemon = PokemonFogo('charmander')
+pokemon_amigo = PokemonEletrico()
+
+print(meu_pokemon)
+print(pokemon_amigo)
